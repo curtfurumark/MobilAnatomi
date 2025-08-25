@@ -7,26 +7,26 @@ import kotlinx.coroutines.flow.update
 import se.curtrune.mobilanatomi.model.ProgrammingLanguage
 import se.curtrune.mobilanatomi.model.Repository
 
-class ProgrammingLanguagesViewModel : ViewModel() {
+class LanguagesViewModel : ViewModel() {
     private val repository = Repository
-    private val _state = MutableStateFlow(ProgrammingLanguagesState())
+    private val _state = MutableStateFlow(LanguagesState())
     val state = _state.asStateFlow()
     init {
         println("init ProgrammingLanguagesViewModel")
         _state.update { it.copy(languages = repository.programmingLanguages) }
     }
-    fun onEvent(event: ProgrammingLanguagesEvent){
+    fun onEvent(event: LanguagesEvent){
         when(event){
-            is ProgrammingLanguagesEvent.AddLanguage -> {
+            is LanguagesEvent.AddLanguage -> {
                 addLanguage(event.language)
             }
-            is ProgrammingLanguagesEvent.DeleteLanguage -> {
+            is LanguagesEvent.DeleteLanguage -> {
                 repository.deleteLanguage(event.language)
             }
-            is ProgrammingLanguagesEvent.OnClickLanguage -> {
-
+            is LanguagesEvent.OnClickLanguage -> {
+                onLanguageClicked(event.language)
             }
-            is ProgrammingLanguagesEvent.UpdateLanguage -> {
+            is LanguagesEvent.UpdateLanguage -> {
                 repository.updateLanguage(event.language)
             }
         }
@@ -34,10 +34,8 @@ class ProgrammingLanguagesViewModel : ViewModel() {
     private fun addLanguage(language: ProgrammingLanguage){
         println("LanguagesViewModel.addLanguage $language")
         repository.addLanguage(language)
-        //println(repository.programmingLanguages)
         val languages = repository.programmingLanguages
         _state.update{ it.copy(
-            //languages = it.languages + language,
             languages = languages,
             isLoading = !it.isLoading
         ) }

@@ -5,17 +5,16 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
-import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import se.curtrune.mobilanatomi.model.ProgrammingLanguage
-import se.curtrune.mobilanatomi.viewModel.ProgrammingLanguagesState
+import se.curtrune.mobilanatomi.viewModel.LanguagesState
 
 @Composable
 fun ProgrammingLanguageList(
     modifier: Modifier = Modifier,
-    state: ProgrammingLanguagesState,
+    state: LanguagesState,
     //languages: List<ProgrammingLanguage>,
     onCLick: (ProgrammingLanguage) -> Unit
 ) {
