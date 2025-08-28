@@ -2,11 +2,13 @@ plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
     alias(libs.plugins.kotlin.compose)
+    alias(libs.plugins.ksp)
+    //alias(libs.plugins.androidx.room)
 }
 
 android {
     namespace = "se.curtrune.mobilanatomi"
-    compileSdk = 35
+    compileSdk = 36
 
     defaultConfig {
         applicationId = "se.curtrune.mobilanatomi"
@@ -50,6 +52,9 @@ dependencies {
     implementation(libs.androidx.ui.tooling.preview)
     implementation(libs.androidx.material3)
     implementation(libs.androidx.lifecycle.viewmodel.ktx)
+    implementation(libs.androidx.room.runtime)
+    ksp(libs.androidx.room.compiler)
+    annotationProcessor(libs.androidx.room.compiler)
     //implementation(libs.androidx.lifecycle.viewmodel.compose.ktx)
     //this is the one that was missing
     implementation(libs.androidx.lifecycle.viewmodel.compose)

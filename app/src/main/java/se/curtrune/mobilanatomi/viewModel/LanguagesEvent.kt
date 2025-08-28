@@ -7,5 +7,4 @@ sealed interface LanguagesEvent {
     data class DeleteLanguage(val language: ProgrammingLanguage) : LanguagesEvent
     data class UpdateLanguage(val language: ProgrammingLanguage) : LanguagesEvent
     data class OnClickLanguage(val language: ProgrammingLanguage) : LanguagesEvent
-
 }

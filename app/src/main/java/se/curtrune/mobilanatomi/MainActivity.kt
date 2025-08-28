@@ -20,26 +20,8 @@ class MainActivity : ComponentActivity() {
         //enableEdgeToEdge()
         setContent {
             MobilAnatomiTheme {
-                Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
-                    ProgrammingLanguageScreen(modifier = Modifier.padding(innerPadding))
-                }
+                ProgrammingLanguageScreen()
             }
         }
-    }
-}
-
-@Composable
-fun Greeting(name: String, modifier: Modifier = Modifier) {
-    Text(
-        text = "Hello $name!",
-        modifier = modifier
-    )
-}
-
-@Preview(showBackground = true)
-@Composable
-fun GreetingPreview() {
-    MobilAnatomiTheme {
-        Greeting("Android")
     }
 }
